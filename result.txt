@@ -1,0 +1,21 @@
+cd nemu && make
+make[1]: 进入目录“/data/workspace/myshixun/icspa-public/nemu”
+gcc -ggdb3 -MMD -MP -Wall -Werror -O2 -I./include -I../include -I../libs -I../libs/nemu-ref/include   -c -o src/cpu/reg.o src/cpu/reg.c
+gcc -ggdb3 -MMD -MP -Wall -Werror -O2 -I./include -I../include -I../libs -I../libs/nemu-ref/include   -c -o src/cpu/fpu.o src/cpu/fpu.c
+gcc -ggdb3 -MMD -MP -Wall -Werror -O2 -I./include -I../include -I../libs -I../libs/nemu-ref/include   -c -o src/cpu/cpu.o src/cpu/cpu.c
+gcc -ggdb3 -MMD -MP -Wall -Werror -O2 -I./include -I../include -I../libs -I../libs/nemu-ref/include   -c -o src/cpu/decode/opcode.o src/cpu/decode/opcode.c
+gcc -ggdb3 -MMD -MP -Wall -Werror -O2 -I./include -I../include -I../libs -I../libs/nemu-ref/include   -c -o src/cpu/decode/opcode_ref.o src/cpu/decode/opcode_ref.c
+gcc -ggdb3 -MMD -MP -Wall -Werror -O2 -I./include -I../include -I../libs -I../libs/nemu-ref/include   -c -o src/cpu/decode/sib.o src/cpu/decode/sib.c
+gcc -ggdb3 -MMD -MP -Wall -Werror -O2 -I./include -I../include -I../libs -I../libs/nemu-ref/include   -c -o src/cpu/decode/debug.o src/cpu/decode/debug.c
+gcc -ggdb3 -MMD -MP -Wall -Werror -O2 -I./include -I../include -I../libs -I../libs/nemu-ref/include   -c -o src/cpu/decode/operand.o src/cpu/decode/operand.c
+src/cpu/decode/operand.c: In function ‘parse_operand_address’:
+src/cpu/decode/operand.c:163:34: error: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘size_t’ {aka ‘long unsigned int’} [-Werror=format=]
+  163 |    printf("illegal operand size %d\n", opr->data_size);
+      |                                 ~^     ~~~~~~~~~~~~~~
+      |                                  |        |
+      |                                  int      size_t {aka long unsigned int}
+      |                                 %ld
+cc1: all warnings being treated as errors
+make[1]: *** [<内置>：src/cpu/decode/operand.o] 错误 1
+make[1]: 离开目录“/data/workspace/myshixun/icspa-public/nemu”
+make: *** [Makefile:7：nemu] 错误 2
